@@ -104,4 +104,13 @@ public class Board {
                         if(mines[rows][columns] != -1)
                             mines[rows][columns]++;
     }
+    
+    public void showMines() {
+        for(int i = 1; i < 9; i++)
+            for(int j = 1; j < 9; j++)
+                if(mines[i][j] == -1)
+                    board[i][j] = '*';
+    }
+    
+    
 }
