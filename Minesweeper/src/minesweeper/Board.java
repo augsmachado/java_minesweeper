@@ -30,7 +30,7 @@ public class Board {
     public boolean won() {
         int count = 0;
         
-        for(int rows =1; rows < 9; rows++) {
+        for(int rows = 1; rows < 9; rows++) {
             for(int columns = 1; columns < 9; columns++) {
                 if(board[rows][columns] == '_')  {
                     count++;
@@ -44,13 +44,10 @@ public class Board {
     
     public void openNeighbor() {
         // i => row and j => column
-        for(int i = -1; i < 2; i++) {
-            for(int j = -1; j < 2; j++) {
-                if( (mines[row+i][column+j] != -1) && (row != 0 && row != 9 && column != 0 && column != 9) ){
+        for(int i = -1; i < 2; i++)
+            for(int j = -1; j < 2; j++)
+                if( (mines[row+i][column+j] != -1) && (row != 0 && row != 9 && column != 0 && column != 9))
                     board[row+i][column+j] = Character.forDigit(mines[row+i][column+j], 10);
-                }
-            }
-        }
     }
     
     public int getPosition(int row, int column) {
@@ -80,7 +77,8 @@ public class Board {
     }
     
     public void show() {
-        System.out.println("\n     Rows");
+        System.out.print("                      Columns");   
+        System.out.println("\n     Rows   1   2   3   4   5   6   7   8");
         
         for(int rows = 8; rows > 0; rows--) {
            System.out.print("       "+rows + " ");
@@ -90,10 +88,7 @@ public class Board {
             }
                 
             System.out.println();
-        }
-            
-        System.out.println("\n            1   2   3   4   5   6   7   8");
-        System.out.println("                      Columns"); 
+        } 
     }
     
     public void fillTips() {
@@ -102,7 +97,8 @@ public class Board {
                 for(int i = -1; i <= 1; i++)
                     for(int j = -1; j <= 1; j++)
                         if(mines[rows][columns] != -1)
-                            mines[rows][columns]++;
+                            if(mines[rows +i][columns +j] == -1)
+                                mines[rows][columns]++;
     }
     
     public void showMines() {
@@ -120,10 +116,26 @@ public class Board {
     }
     
     public void startMines() {
-        for(int i = 0; i < mines.length; i++)
-            for(int j = 0; j < mines.length; j++)
+        for(int i = 1; i < mines.length; i++)
+            for(int j = 1; j < mines.length; j++)
                 mines[i][j] = 0;
     }
     
-    public void
+    public void drawMines() {
+        boolean drawn;
+        int rows, columns;
+        
+        for(int i = 0; i < 10; i++) {
+            do {
+                rows = random.nextInt(8) +1;
+                columns = random.nextInt(8) +1;
+                
+                // If position at mines[rows][columns] == -1, drawn is true, else is false
+                drawn = mines[rows][columns] == -1;
+                
+            } while(drawn);
+            
+            mines[rows][columns] = -1;
+        }
+    }
 }

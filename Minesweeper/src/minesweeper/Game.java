@@ -9,11 +9,11 @@ public class Game {
 
     public Game() {
         board = new Board();
-        Game(board);
+        Play(board);
         move = new int[2];
     }
     
-    public void Game(Board board) {
+    public void Play(Board board) {
         do {
             round++;
             System.out.println("Round " +round);
@@ -21,7 +21,7 @@ public class Game {
             finish = board.setPosition();
             
             if(!finish) {
-                board.opennNeighbor();
+                board.openNeighbor();
                 finish = board.won();
             }
         } while(!finish);
