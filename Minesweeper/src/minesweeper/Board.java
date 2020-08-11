@@ -81,5 +81,19 @@ public class Board {
     
     public void show() {
         System.out.println("\n     Rows");
+        
+        for(int rows = 8; rows > 0; rows--) {
+           System.out.print("       "+rows + " ");
+            
+            for(int columns = 1 ; columns < 9 ; columns++){
+                    System.out.print("   "+ board[rows][columns]);
+            }
+                
+            System.out.println();
+        }
+            
+        System.out.println("\n            1   2   3   4   5   6   7   8");
+        System.out.println("                      Columns"); 
+        }
     }
 }
