@@ -94,6 +94,14 @@ public class Board {
             
         System.out.println("\n            1   2   3   4   5   6   7   8");
         System.out.println("                      Columns"); 
-        }
+    }
+    
+    public void fillTips() {
+        for(int rows = 1; rows < 9; rows++)
+            for(int columns = 1; columns < 9; columns++)
+                for(int i = -1; i <= 1; i++)
+                    for(int j = -1; j <= 1; j++)
+                        if(mines[rows][columns] != -1)
+                            mines[rows][columns]++;
     }
 }
