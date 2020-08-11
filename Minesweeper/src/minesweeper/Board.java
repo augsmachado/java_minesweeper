@@ -110,7 +110,20 @@ public class Board {
             for(int j = 1; j < 9; j++)
                 if(mines[i][j] == -1)
                     board[i][j] = '*';
+        show();
     }
     
+    public void startBoard() {
+        for(int i = 1; i < mines.length; i++)
+            for(int j = 1; j < mines.length; j++)
+                board[i][j] = '_';
+    }
     
+    public void startMines() {
+        for(int i = 0; i < mines.length; i++)
+            for(int j = 0; j < mines.length; j++)
+                mines[i][j] = 0;
+    }
+    
+    public void
 }
